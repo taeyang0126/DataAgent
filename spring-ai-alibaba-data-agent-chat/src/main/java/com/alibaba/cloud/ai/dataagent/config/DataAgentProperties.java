@@ -42,17 +42,17 @@ public class DataAgentProperties {
 	/**
 	 * sql执行失败重试次数
 	 */
-	private int maxSqlRetryCount = 10;
+	private int maxSqlRetryCount = 5;
 
 	/**
 	 * sql优化最多次数
 	 */
-	private int maxSqlOptimizeCount = 10;
+	private int maxSqlOptimizeCount = 5;
 
 	/**
 	 * sql优化分数阈值
 	 */
-	private double sqlScoreThreshold = 0.95;
+	private double sqlScoreThreshold = 0.9;
 
 	private TextSplitter textSplitter = new TextSplitter();
 

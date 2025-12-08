@@ -4,9 +4,9 @@ server:
 # 存储 DataAgent 业务数据的数据库，并非Agent分析数据的来源
 spring:
   datasource:
-    url: ${DATA_AGENT_DATASOURCE_URL:jdbc:mysql://127.0.0.1:3306/saa_data_agent?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&allowMultiQueries=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Shanghai}
-    username: ${DATA_AGENT_DATASOURCE_USERNAME:root}
-    password: ${DATA_AGENT_DATASOURCE_PASSWORD:root}
+    url: jdbc:mysql://${MYSQL_HOST}:3306/${MYSQL_DATA_AGENT_DB:data_agent}?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true&allowMultiQueries=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Shanghai
+    username: ${MYSQL_USERNAME}
+    password: ${MYSQL_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
   sql:
@@ -26,11 +26,11 @@ spring:
       chat:
         enabled: true
         options:
-          model: qwen-plus
+          model: qwen3-max
       embedding:
         enabled: true
         options:
-          model: text-embedding-v4
+          model: text-embedding-v3
     alibaba:
       data-agent:
         llm-service-type: stream

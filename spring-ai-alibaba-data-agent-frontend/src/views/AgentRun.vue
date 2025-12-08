@@ -1003,8 +1003,9 @@
           if (currentPageData.length === 0) {
             tableHtml += `<tr><td colspan="${columns.length}" class="result-set-empty-cell">暂无数据</td></tr>`;
           } else {
-            currentPageData.forEach(row => {
-              tableHtml += `<tr>`;
+            currentPageData.forEach((row, rowIndex) => {
+              const isEven = (startIndex + rowIndex) % 2 === 0;
+              tableHtml += `<tr class="${isEven ? 'table-row-even' : 'table-row-odd'}">`;
               columns.forEach(column => {
                 const value = row[column] || '';
                 tableHtml += `<td>${escapeHtml(value)}</td>`;
@@ -1481,6 +1482,14 @@
     margin: 8px 0;
     text-align: center;
   }
+
+  .table-row-odd {
+    background-color: #c5f598;
+  }
+  .table-row-even {
+    background-color: #dcb8ef;
+  }
+
 
   /* 响应式设计 */
   @media (max-width: 768px) {
